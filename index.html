@@ -1889,7 +1889,9 @@
       }
     }
 
+
     @media (max-width: 768px) {
+
       .section {
         padding: 72px 0;
       }
@@ -1962,6 +1964,14 @@
       .problem-visual {
         grid-template-columns: 1fr;
       }
+
+      /* Hero subtitle mobile fix */
+      .hero-subtitle {
+        max-width: 80%;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
     }
 
     @media (max-width: 480px) {
@@ -3045,9 +3055,119 @@
       box-shadow: 0 10px 28px rgba(0, 132, 205, 0.22);
     }
 
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(5, 14, 26, 0.88);
+      backdrop-filter: blur(14px);
+    }
+
+    .video-modal.open {
+      display: flex;
+    }
+
+    .video-modal-content {
+      width: min(960px, 100%);
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark3) 100%);
+      border: 1px solid rgba(0, 132, 205, 0.28);
+      border-radius: 24px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .video-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .video-modal-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .video-modal-sub {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.45);
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+
+    .video-close {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .video-close:hover {
+      background: var(--primary);
+    }
+
+    .video-frame-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(0, 132, 205, 0.18), transparent 45%),
+        #000;
+    }
+
+    .video-frame-wrap video,
+    .video-frame-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .video-placeholder-note {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(560px, 82%);
+      text-align: center;
+      color: white;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .video-placeholder-note strong {
+      display: block;
+      font-family: 'Sora', sans-serif;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .video-placeholder-note span {
+      display: block;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.6;
+    }
+
+
     @media (max-width: 768px) {
       .btn-video-jump {
-        width: 100%;
+        width: 80%;
         justify-content: center;
       }
     }
@@ -3055,6 +3175,41 @@
 </head>
 
 <body>
+  <div class="video-modal" id="videoModal">
+
+    <div class="video-modal-content">
+
+      <div class="video-modal-header">
+
+        <div>
+          <div class="video-modal-title">
+            Digital MRD Workflow for Hospitals
+          </div>
+
+          <div class="video-modal-sub">
+            Hospital MRD challenges, process flow, workflow and key Digital MRD features
+          </div>
+        </div>
+
+        <button class="video-close" onclick="closeVideoModal()">
+          ×
+        </button>
+
+      </div>
+
+      <div class="video-frame-wrap">
+
+        <video id="mrdVideo" controls playsinline>
+
+          <source src="videos/0529.mp4" type="video/mp4">
+
+        </video>
+
+      </div>
+
+    </div>
+
+  </div>
 
   <!-- NAVBAR -->
   <nav id="navbar">
@@ -3138,7 +3293,7 @@
               style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.2)">
               Explore Features →
             </a>
-            <button type="button" class="btn btn-video-jump btn-lg" onclick="scrollToHeroVideo()">
+            <button type="button" class="btn btn-video-jump btn-lg" onclick="openVideoModal()">
               ▶ Watch Workflow Video
             </button>
           </div>
@@ -3161,20 +3316,21 @@
             <!-- VIDEO CARD - Separate section above dashboard -->
             <div class="hero-video-card" id="digital-mrd-video">
               <div class="hero-ad-video">
-                <video id="digitalMrdVideo" autoplay muted loop playsinline preload="metadata"
-                  poster="Img/digital-mrd-video-poster.jpg">
-                  <source src="videos/digital-mrd-hospital-process.mp4" type="video/mp4">
+                <video id="digitalMrdVideo" autoplay muted loop playsinline preload="metadata">
+
+                  <source src="videos/0529.mp4" type="video/mp4">
+
                   Your browser does not support the video tag.
                 </video>
 
-                <div class="hero-video-note">● Digital MRD Overview</div>
+                <!-- <div class="hero-video-note">● Digital MRD Overview</div> -->
 
                 <div class="hero-video-caption">
                   <div class="hero-video-copy">
-                    <div class="video-kicker">Hospital Record Workflow</div>
-                    <div class="video-title">From paper records to secure digital access</div>
+                    <!-- <div class="video-kicker">Hospital Record Workflow</div> -->
+                    <!-- <div class="video-title">From paper records to secure digital access</div> -->
                   </div>
-                  <div class="hero-video-pill">▶ Auto Preview</div>
+                  <!-- <div class="hero-video-pill">▶ Auto Preview</div> -->
                 </div>
               </div>
             </div>
@@ -3699,7 +3855,7 @@
           <div class="video-sublabel">See how we transform paper records into searchable digital intelligence in 7 steps
           </div>
         </div>
-      </div> -->
+      </div> 
 
       <!-- 3-pillar grid -->
       <div class="hwdi-pillars">
@@ -4245,23 +4401,31 @@
 
       document.querySelectorAll('.billing-btn')[1].classList.add('active');
     }
-    // Scroll to Digital MRD video and start playing
-    function scrollToHeroVideo() {
-      const videoSection = document.getElementById('digital-mrd-video');
-      const video = document.getElementById('digitalMrdVideo');
 
-      if (videoSection) {
-        videoSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center'
-        });
-      }
+    function openVideoModal() {
+
+      document.getElementById("videoModal")
+        .style.display = "flex";
+
+      const video =
+        document.getElementById("mrdVideo");
 
       if (video) {
-        video.muted = true;
-        video.play().catch(function () {
-          // Browser may block autoplay; user can press play manually if needed.
-        });
+        video.currentTime = 0;
+        video.play();
+      }
+    }
+
+    function closeVideoModal() {
+
+      document.getElementById("videoModal")
+        .style.display = "none";
+
+      const video =
+        document.getElementById("mrdVideo");
+
+      if (video) {
+        video.pause();
       }
     }
   </script>
