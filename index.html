@@ -3265,7 +3265,8 @@
           <div class="hero-eyebrow">
             <div class="hero-eyebrow-pill">
               <span class="badge-dot"></span>
-              NABH & ISO 27001 Compliant
+              ISO/IEC 27001:2022
+              <!-- NABH & ISO 27001 Compliant -->
             </div>
           </div>
 
@@ -3301,7 +3302,7 @@
           <div class="hero-trust">
             <div class="hero-trust-logos">
               <div class="trust-badge">✓ NABH</div>
-              <div class="trust-badge">✓ ISO 27001</div>
+              <!-- <div class="trust-badge">✓ ISO 27001</div> -->
               <div class="trust-badge">✓ HIPAA Ready</div>
               <div class="trust-badge">✓ HL7 FHIR</div>
               <div class="trust-badge">✓ ABDM/ABHA</div>
@@ -3430,7 +3431,7 @@
           <div class="stat-sub">Serving healthcare since 2008</div>
         </div>
         <div class="stat-item fade-up fade-up-2">
-          <div class="stat-num">150M<span>+</span></div>
+          <div class="stat-num">150<span>M</span></div>
           <div class="stat-label">Documents Digitized</div>
           <div class="stat-sub">Indexed, searchable & securely stored</div>
         </div>
@@ -3668,7 +3669,7 @@
             existing hospital ecosystem from day one.</p>
           <div class="compliance-row">
             <div class="comp-badge">✓ NABH</div>
-            <div class="comp-badge">✓ ISO 27001</div>
+            <div class="comp-badge">✓ ISO 9001 :2015</div>
             <div class="comp-badge">✓ HIPAA Ready</div>
             <div class="comp-badge">✓ HL7 FHIR</div>
             <div class="comp-badge">✓ IT Act 2000</div>
@@ -3897,7 +3898,7 @@
         </div>
         <ul class="hwdi-benefits-list">
           <li>Onsite scanning — zero records leave your premises</li>
-          <li>AI OCR with 99.8% accuracy on printed text</li>
+          <li>AI OCR with 99.99% accuracy on printed text</li>
           <li>Auto-categorization: discharge summaries, lab reports, prescriptions, imaging</li>
           <li>Instant search by patient ID, name, date, or department</li>
           <li>Immutable audit trails for every access and action</li>
@@ -4171,7 +4172,7 @@
               <div class="ci-icon">📞</div>
               <div>
                 <div class="ci-label">Phone / WhatsApp</div>
-                <div class="ci-val">+91 9538169692</div>
+                <div class="ci-val">+91 8884459038</div>
               </div>
             </div>
             <div class="contact-item">
@@ -4199,7 +4200,7 @@
           </div>
           <div class="form-group">
             <label>Phone Number *</label>
-            <input type="tel" id="f-phone" placeholder="+91 98765 43210">
+            <input type="tel" id="f-phone" placeholder="+91 8884459038">
           </div>
           <button class="btn btn-primary btn-lg form-submit" onclick="handleSubmit(this)">
             📅 Book My Free Demo
@@ -4274,7 +4275,7 @@
 
 
   <!-- WHATSAPP FLOATING BUTTON -->
-  <a href="https://wa.me/919538169692?text=Hi%2C%20I'm%20interested%20in%20Digital%20MRD%20by%20NeoLotex.%20Please%20share%20more%20details."
+  <a href="https://wa.me/918884459038?text=Hi%2C%20I'm%20interested%20in%20Digital%20MRD%20by%20NeoLotex.%20Please%20share%20more%20details."
     target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -4317,28 +4318,84 @@
       if (!name) { alert('Please enter your name.'); return }
       if (!hospital) { alert('Please enter your hospital or organization.'); return }
       if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return }
-      if (!phone) { alert('Please enter your phone number.'); return }
-
-      try {
-        const response = await fetch('send-demo-request.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, hospital, email, phone })
-        });
-        const result = await response.json();
-        if (!response.ok || !result.success) {
-          throw new Error(result.message || 'Unable to send your request right now.');
-        }
-      } catch (error) {
-        alert(error.message || 'Unable to send your request right now.');
+      if (!phone) {
+        alert('Please enter your phone number.');
         return;
       }
+
+      const cleanPhone = phone.replace(/\D/g, '');
+
+      if (cleanPhone.length !== 10) {
+        alert('Please enter a valid 10-digit mobile number.');
+        return;
+      }
+      // Rest of your existing code continues here...
+      // if (!phone) { alert('Please enter your phone number.'); return }
+
+      // try {
+      //   const response = await fetch('send-demo-request.php', {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify({ name, hospital, email, phone })
+      //   });
+      //   const result = await response.json();
+      //   if (!response.ok || !result.success) {
+      //     throw new Error(result.message || 'Unable to send your request right now.');
+      //   }
+      // } catch (error) {
+      //   alert(error.message || 'Unable to send your request right now.');
+      //   return;
+      // }
 
       const orig = btn.innerHTML;
       btn.innerHTML = '✓ Demo Requested! We\'ll contact you within 24 hours.';
       btn.style.background = 'var(--accent)';
       btn.disabled = true;
       setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 5000);
+
+      // Form submit
+      async function handleSubmit(btn) {
+        const name = document.getElementById('f-name').value.trim();
+        const hospital = document.getElementById('f-hospital').value.trim();
+        const email = document.getElementById('f-email').value.trim();
+        const phone = document.getElementById('f-phone').value.trim();
+        if (!name) { alert('Please enter your name.'); return }
+        if (!hospital) { alert('Please enter your hospital or organization.'); return }
+        if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return }
+        if (!phone) { alert('Please enter your valid phone number.'); return }
+
+        // try {
+        //   const response = await fetch('send-demo-request.php', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({ name, hospital, email, phone })
+        //   });
+        //   const result = await response.json();
+        //   if (!response.ok || !result.success) {
+        //     throw new Error(result.message || 'Unable to send your request right now.');
+        //   }
+        // } catch (error) {
+        //   alert(error.message || 'Unable to send your request right now.');
+        //   return;
+        // }
+        // WhatsApp Lead Capture & Redirect
+
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✓ Demo Requested! We\'ll contact you within 24 hours.';
+        btn.style.background = 'var(--accent)';
+        btn.disabled = true;
+        setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 5000);
+      }
+      const message = "Hello, I am interested in Digital MRD Demo.%0A%0A" +
+        "Name: " + name + "%0A" +
+        "Hospital: " + hospital + "%0A" +
+        "Email: " + email + "%0A" +
+        "Phone: " + phone;
+
+      window.open(
+        "https://wa.me/918884459038?text=" + message,
+        "_blank"
+      );
     }
 
     // Counter animation for stats
