@@ -1713,27 +1713,48 @@
     .footer-social {
       display: flex;
       gap: 10px;
+      align-items: center;
     }
 
     .social-btn {
-      width: 36px;
-      height: 36px;
+      width: 30px;
+      height: 30px;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.5);
+      font-family: 'Sora', sans-serif;
       font-size: 15px;
+      font-weight: 800;
+      line-height: 1;
       text-decoration: none;
-      transition: all 0.2s;
+      color: #ffffff;
+      transition: all 0.25s ease;
+    }
+
+    .social-btn.linkedin {
+      background: #0A66C2;
+    }
+
+    .social-btn.twitter {
+      background: #000000;
+    }
+
+    .social-btn.youtube {
+      background: #FF0000;
+    }
+
+    .social-btn.instagram {
+      background: linear-gradient(135deg, #833AB4, #E1306C, #FCAF45);
+    }
+
+    .social-btn.facebook {
+      background: #1877F2;
     }
 
     .social-btn:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
+      transform: translateY(-3px);
+      opacity: 0.9;
     }
 
     .footer-col-title {
@@ -3369,7 +3390,7 @@
                 <div class="metric-row">
                   <div class="metric-box">
                     <div class="metric-val">2,847</div>
-                    <div class="metric-lbl">Docs Today</div>
+                    <div class="metric-lbl">Docs Per Day</div>
                   </div>
 
                   <div class="metric-box">
@@ -4222,10 +4243,21 @@
           <p class="footer-brand-desc">Enterprise medical record digitization and management platform, transforming how
             healthcare organizations store, retrieve, and protect patient records.</p>
           <div class="footer-social">
-            <a class="social-btn" href="#">in</a>
-            <a class="social-btn" href="#">tw</a>
-            <a class="social-btn" href="#">yt</a>
-            <a class="social-btn" href="#">📧</a>
+
+            <div class="footer-social">
+
+              <div class="footer-social">
+                <a class="social-btn linkedin" href="https://www.linkedin.com/company/neolotex-business-solutions"
+                  target="_blank">in</a>
+                <a class="social-btn twitter" href="https://twitter.com/neolotex" target="_blank">𝕏</a>
+                <a class="social-btn youtube" href="https://www.youtube.com/@neolotex" target="_blank">▶</a>
+                <a class="social-btn instagram" href="https://www.instagram.com/neolotex_business_solutions/"
+                  target="_blank">◎</a>
+                <a class="social-btn facebook" href="https://www.facebook.com/neolotex" target="_blank">f</a>
+              </div>
+
+            </div>
+
           </div>
         </div>
         <div>
