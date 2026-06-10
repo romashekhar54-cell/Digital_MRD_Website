@@ -3222,7 +3222,7 @@
 
         <video id="mrdVideo" controls playsinline>
 
-          <source src="videos/Website Video.mp4">
+          <source src="videos/Digital_MRD-Video.mp4">
 
         </video>
 
@@ -3340,7 +3340,7 @@
               <div class="hero-ad-video">
                 <video id="digitalMrdVideo" autoplay muted loop playsinline preload="metadata">
 
-                  <source src="videos/Website Video.mp4">
+                  <source src="videos/Digital_MRD-Video.mp4">
 
                   Your browser does not support the video tag.
                 </video>
@@ -3381,7 +3381,7 @@
               <div class="hero-main-card">
                 <div class="card-header-row">
                   <div class="card-title-group">
-                    <div class="card-kicker">MRD // LIVE DASHBOARD</div>
+                    <div class="card-kicker">MRD // LIVE DASHBOARD</div>git status
                     <div class="card-title">Document Processing Center</div>
                   </div>
                   <div class="card-status"><span class="status-dot"></span>Live</div>
@@ -4250,9 +4250,15 @@
                 <a class="social-btn linkedin" href="https://www.linkedin.com/company/neolotex-business-solutions"
                   target="_blank">in</a>
                 <a class="social-btn twitter" href="https://twitter.com/neolotex" target="_blank">𝕏</a>
-                <a class="social-btn youtube" href="https://www.youtube.com/@neolotex" target="_blank">▶</a>
+                <a class="social-btn youtube" href="https://www.youtube.com/@neolotexbusinesssolutions5438"
+                  target="_blank">▶</a>
                 <a class="social-btn instagram" href="https://www.instagram.com/neolotex_business_solutions/"
-                  target="_blank">◎</a>
+                  target="_blank" aria-label="Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z" />
+                  </svg>
+                </a>
                 <a class="social-btn facebook" href="https://www.facebook.com/neolotex" target="_blank">f</a>
               </div>
 
@@ -4364,20 +4370,20 @@
       // Rest of your existing code continues here...
       // if (!phone) { alert('Please enter your phone number.'); return }
 
-      // try {
-      //   const response = await fetch('send-demo-request.php', {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({ name, hospital, email, phone })
-      //   });
-      //   const result = await response.json();
-      //   if (!response.ok || !result.success) {
-      //     throw new Error(result.message || 'Unable to send your request right now.');
-      //   }
-      // } catch (error) {
-      //   alert(error.message || 'Unable to send your request right now.');
-      //   return;
-      // }
+      try {
+        const response = await fetch('send-demo-request.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, hospital, email, phone })
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Unable to send your request right now.');
+        }
+      } catch (error) {
+        alert(error.message || 'Unable to send your request right now.');
+        return;
+      }
 
       const orig = btn.innerHTML;
       btn.innerHTML = '✓ Demo Requested! We\'ll contact you within 24 hours.';
@@ -4396,20 +4402,20 @@
         if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return }
         if (!phone) { alert('Please enter your valid phone number.'); return }
 
-        // try {
-        //   const response = await fetch('send-demo-request.php', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({ name, hospital, email, phone })
-        //   });
-        //   const result = await response.json();
-        //   if (!response.ok || !result.success) {
-        //     throw new Error(result.message || 'Unable to send your request right now.');
-        //   }
-        // } catch (error) {
-        //   alert(error.message || 'Unable to send your request right now.');
-        //   return;
-        // }
+        try {
+          const response = await fetch('send-demo-request.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, hospital, email, phone })
+          });
+          const result = await response.json();
+          if (!response.ok || !result.success) {
+            throw new Error(result.message || 'Unable to send your request right now.');
+          }
+        } catch (error) {
+          alert(error.message || 'Unable to send your request right now.');
+          return;
+        }
         // WhatsApp Lead Capture & Redirect
 
         const orig = btn.innerHTML;
